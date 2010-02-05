@@ -10,6 +10,7 @@ end
 
 
 get '/:id' do
+  @meta_refresh = 120
   @trip = Trip.first(:id => params[:id]) rescue nil
   haml :'public/trip'
 end

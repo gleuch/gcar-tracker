@@ -38,6 +38,7 @@ helpers do
   def dev?; (Sinatra::Application.environment.to_s != 'production'); end
 
   def partial(name, options = {})
+    name = name.to_s if name.is_a?(Symbol)
     item_name, counter_name = name.to_sym, "#{name}_counter".to_sym
     options = {:cache => true, :cache_expiry => 300}.merge(options)
 

@@ -1,0 +1,5 @@
+%table{:style => 'height: 100% !important; width: 100% !important;'}
+  %tr{:style => 'height: 100% !important; width: 100% !important;'}
+    %td.map_box{:id => "map_box_#{!@trip.blank? ? @trip.id : ''}", :style => 'height: 100% !important; width: 100% !important;'}
+      = partial :'public/trip_map'
+      

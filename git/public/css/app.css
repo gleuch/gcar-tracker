@@ -1,0 +1,20 @@
+*, html, body {padding: 0; margin: 0; outline: 0; border: 0; vertical-align: top;}
+body {font-family: Arial, Helvetica, Verdana, sans-serif;  height: 100%;}
+h1, p, h2 {padding: 0 0 4px 0;}
+#content {padding: 12px 20px; height: 100%;}
+#logo {padding: 0 30px 0 0;}
+#about {padding: 6px 0 0 0;}
+#video {}
+#chat {}
+
+
+.map_box {clear: both; display: block; width: 100%; min-width: 500px; height: 100%; min-height: 450px; background: #ffff00;}
+
+
+/* Fuck Google */
+.map_box #logocontrol, .map_box .terms-of-use-link, .map_box div span {display: none;}
+.map_box #scalecontrol {left: 10px !important;}
+.map_box div {font-size: 15px; line-height: 18px;}
+
+
+#topbar {padding: 0 0 20px 0; border-bottom: 1px solid #cccccc; margin: 0 0 20px 0;}

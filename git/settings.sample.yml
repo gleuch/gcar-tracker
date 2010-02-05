@@ -1,0 +1,37 @@
+development: &local
+  site_name:        gCar Tracker
+  site_language:    en
+
+  template_name:          default
+
+  twitter_oauth_token:		ENTER-YOUR-TOKEN-HERE
+  twitter_oauth_secret:		ENTER-YOUR-TOKEN-SECRET-HERE
+
+  gmap_key:       ENTER-YOUR-KEY-HERE
+
+  auth_logins:    ['username:password'] # Can push additional ones onto this array
+
+  db_type:        sqlite
+  db_connection:  sqlite3:///ROOT/gcar_dev.db
+
+
+production:
+  <<: *local
+
+	# db_type:          mysql
+	# db_connection:    mysql://root:*****@localhost/gcar_prod
+	db_type:          sqlite
+  db_connection:    sqlite3:///ROOT/gcar_prod.db
+
+
+staging:
+  <<: *local
+
+	db_type:        sqlite
+  db_connection:  sqlite3:///ROOT/gcar_stage.db
+
+test:
+  <<: *local
+
+	db_type:        sqlite
+  db_connection:  sqlite3:///ROOT/gcar_test.db

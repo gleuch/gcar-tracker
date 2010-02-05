@@ -1,0 +1,50 @@
+%table#topbar{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => "100%"}
+  %tr
+    %td#logo
+      %a{:href => "http://fffff.at"}
+        %img{:src => "http://fffff.at/fuckflickr/data/TM10/thumb/FAT-NBC-logo.jpg", :width => "87", :height => "75", :title => "Free Art & Technology Lab", :alt => "", :border => "0"}
+
+    %td#about{:width => "100%"}
+      %h1 Tracking the Google Streetcar
+      %p F.A.T. Lab has tracked down the Google streetcar with a GPS tracker.<br />Come help us find and tell your friends about the evils being committed by Google's streetviews car and crew.
+
+- unless @trips.blank?
+  - @trips.each do |trip|
+    - current_loc = trip.location.first(:order => [:created_at.desc])
+
+    %h2 City: #{trip.name}
+    - unless current_loc.blank?
+      .map_box{:id => "map_box_#{trip.id}"}
+        Map will go here
+      %script{:type => 'text/javascript'}
+        $(document).ready(function() {
+        try {
+
+        if (GBrowserIsCompatible()) {
+        var map_#{trip.id} = new GMap2(document.getElementById("map_box_#{trip.id}"));
+        map_#{trip.id}.setCenter(new GLatLng(#{current_loc.position}), 15);
+
+        - locs = []
+        - trip.location.each do |loc|
+          - next if locs.include?(loc.position)
+          - locs << loc.position
+          - if loc == current_loc
+            - etc = '' #"<br />#{loc.position.gsub(/,/, ', ')}"
+            map_#{trip.id}.openInfoWindow(new GLatLng(#{loc.position}), '<strong>Current Location of Google Streetcar</strong><br /><em>#{loc.created_at.strftime('%a, %d %b %Y at %I:%M')}</em>#{etc}');
+          map_#{trip.id}.addOverlay(new GMarker(new GLatLng(#{loc.position}) ));
+
+        - if locs.length > 1
+          - points = ''
+          - locs.each{|loc| points << "new GLatLng(#{loc}),"}
+          map_#{trip.id}.addOverlay(new GPolyline([#{points.gsub(/,$/, '')}], "#ff00ff", 9));
+
+        map_#{trip.id}.setUIToDefault();
+
+        }} catch(e) {}
+        });
+    - else
+      %p This trip has not started yet!
+      
+
+- else
+  %p.suggest There are no trips at this time.

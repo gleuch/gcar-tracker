@@ -1,7 +1,7 @@
 - trip ||= @trip
 
 - unless trip.blank?
-  - current_loc = trip.location.first(:order => [:created_at.desc])
+  - current_loc = trip.location.first(:order => [:created_at.desc, :id.desc])
 
   - unless @embed
     %h2 City: #{trip.name}

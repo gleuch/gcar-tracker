@@ -36,10 +36,23 @@ class Location
   property :position,         String
   property :user_id,          Integer
   property :trip_id,          Integer
+  property :note,             Text
   property :created_at,       DateTime
   property :updated_at,       DateTime
 
   belongs_to :user
   belongs_to :trip
+
+  validates_with_method :check_duplicate
+
+  def check_duplicate
+    check = Location.first(:trip_id => self.trip_id, :position => self.position) rescue nil
+    unless check.blank?
+      return true
+    else
+      return [false, 'Duplicate location for this trip.']
+    end
+  end
+
 
 end

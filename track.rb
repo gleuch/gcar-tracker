@@ -20,7 +20,7 @@ configure do
   end
 
   # Models
-  %w(dm-core dm-types dm-timestamps dm-aggregates dm-ar-finders lib/model).each{|lib| require lib}
+  %w(dm-core dm-types dm-timestamps dm-aggregates dm-validations dm-ar-finders lib/model).each{|lib| require lib}
   DataMapper.setup(:default, configatron.db_connection.gsub(/ROOT/, ROOT))
   DataMapper.auto_upgrade!
 

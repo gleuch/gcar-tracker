@@ -43,7 +43,7 @@ class Location
   belongs_to :user
   belongs_to :trip
 
-  validates_with_method :check_duplicate
+  # validates_with_method :check_duplicate
 
   def check_duplicate
     check = Location.first(:trip_id => self.trip_id, :position => self.position) rescue nil

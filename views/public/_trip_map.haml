@@ -8,7 +8,7 @@
 
   - unless current_loc.blank?
     .map_box{:id => (!@embed ? "map_box_#{trip.id}" : '')}
-      Map will go here
+      Loading the map. Please wait&hellip;
     %script{:type => 'text/javascript'}
       $(document).ready(function() {
       try {

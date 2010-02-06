@@ -23,6 +23,7 @@ class Trip
   property :created_at,       DateTime
   property :updated_at,       DateTime
   property :active,           Boolean,    :default => true
+  property :timezone_offset,   Integer,    :default => 0
 
   has n, :location
 end

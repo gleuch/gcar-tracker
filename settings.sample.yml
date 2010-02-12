@@ -1,5 +1,6 @@
 development: &local
   site_name:        gCar Tracker
+  group_name:       My Name
   site_language:    en
 
   template_name:          default
@@ -10,6 +11,8 @@ development: &local
   gmap_key:       ENTER-YOUR-KEY-HERE
 
   auth_logins:    ['username:password'] # Can push additional ones onto this array
+
+  footer_code:    ''
 
   db_type:        sqlite
   db_connection:  sqlite3:///ROOT/gcar_dev.db

@@ -1,5 +1,79 @@
-Google Streetcar Tracker
+                        _                  _             
+  __ _  ___ __ _ _ __  | |_ _ __ __ _  ___| | _____ _ __ 
+ / _` |/ __/ _` | '__| | __| '__/ _` |/ __| |/ / _ \ '__|
+| (_| | (_| (_| | |    | |_| | | (_| | (__|   <  __/ |   
+ \__, |\___\__,_|_|     \__|_|  \__,_|\___|_|\_\___|_|   
+ |___/                                                   
 
------------------------
 
--- info coming soon --
+--------------------------------------------------------------------------------------------
+
+A fun way to track GPS coordinates from a Twitter account onto a map. Used by F.A.T. Lab
+for the Google Streetview Car Berlin prank. http://fffff.at/google-streetcar-berlin
+
+This little Sinatra app has withstood a flood of combined traffic from major media and blog
+sites, including Mashable, Gizmodo, CrunchGear, Forbes.com, NBC, The Guardian, and many many
+more lesser known news and media sites. 
+
+App includes index page, individual trip page, and embeddable map page:
+  http://yourdomain.com (index page)
+  http://yourdomain.com/:id (trip page, :id = trip id #)
+  http://yourdomain.com/embed/:id (trip embed page, :id = trip id #)
+
+
+
+Notes:
+  - Tweets can either use geotagged locations or include the coordinates in the tweet using
+    the format: "L: xx.xxx, xx.xxx".
+  - There is no admin interface for creating new Trips. This must be done via SQL.
+    Be sure to include the UTC timezone offset for correct times.
+
+--------------------------------------------------------------------------------------------
+
+Setup
+-----
+1. Clone the repo into your directory.
+2. Copy settings.sample.yml to settings.yml.
+3. Update the settings.yml file with your information
+  - Site name
+  - Group name
+  - Admin login (prevent public hacks).
+  - Database info (development & production).
+  - Additional footer code (analytics tracking, etc)
+4. Customize your views how you like.
+
+
+
+How to Run
+----------
+1. Create a new Twitter account. http://twitter.com/signup
+2. Create a Twitter application. http://twitter.com/apps/new
+  - Set Application Type to "Browser".
+  - Callback URL is http://yourdomain.com/admin/auth
+  - Access Type is "Read & Write Access"
+  - Check the box for using Twitter for login.
+3. Update the settings.yml file's Twitter oAuth token and secret with the one Twitter created for your new app.
+4. Restart your app.
+5. Sync your Twitter account to the application. http://yourdomain.com/admin/connect
+6. Goto your settings and make sure you have Geotagging enabled.
+7. Create a new trip in the database. (Coming soon, in meantime, use MySQL database.)
+8. Setup a cron job to run every minute.
+  00-59 * * * * wget -q http://admin:password@yourdomain.com/admin/location >/dev/null 2>&1
+8. Volá!
+
+
+
+Getting Started
+---------------
+1. Get inside a Google Street View Car.
+2. Open your favorite Twitter app on GPS enabled smartphone.
+3. Tweet sporadically to plot geographic points on the map.
+4. Relax as the blogosphere and media outlets go into a frenzy.
+
+
+
+--------------------------------------------------------------------------------------------
+
+Copyfree 2010 for the famo. Coded by Greg Leuch <http://gleuch.com>.
+Built with guidance with my peeps at the Free Art & Technology Lab (F.A.T. Lab) <http://ffff.at>.
+

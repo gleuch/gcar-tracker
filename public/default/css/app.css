@@ -11,10 +11,4 @@ h1, p, h2 {padding: 0 0 4px 0;}
 .map_box {clear: both; display: block; width: 100%; min-width: 500px; height: 100%; min-height: 450px; background: #ffff00;}
 
 
-/* Fuck Google */
-.map_box #logocontrol, .map_box .terms-of-use-link, .map_box div span {display: none;}
-.map_box #scalecontrol {left: 10px !important;}
-.map_box div {font-size: 15px; line-height: 18px;}
-
-
 #topbar {padding: 0 0 20px 0; border-bottom: 1px solid #cccccc; margin: 0 0 20px 0;}

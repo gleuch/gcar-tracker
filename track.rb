@@ -29,8 +29,8 @@ configure do
   # set :cache_logging, false # causes problems if using w/ partials! :/
 
   set :sessions, true
-  # set :views, File.dirname(__FILE__) + '/views/'+ configatron.template_name
-  # set :public, File.dirname(__FILE__) + '/public/'+ configatron.template_name
+  set :views, File.dirname(__FILE__) + '/views/'+ configatron.template_name
+  set :public, File.dirname(__FILE__) + '/public/'+ configatron.template_name
 end
 
 
